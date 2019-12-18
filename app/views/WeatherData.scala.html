@@ -1,0 +1,121 @@
+@(weatherEnergyData: List[dto.WeatherDataDto])
+@main("weather data") {
+<html>
+<head>
+    <style>
+
+
+
+
+    </style>
+    <figure class="highcharts-figure">
+
+        <div id="HiChart1"></div>
+    </figure>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div align="center" style="border-style:solid; border-width:1px; margin:10% auto; width:701px; background-color:lightgrey">
+    <!--<div class="container-fluid"-->
+    <h1>Weather Data</h1>
+
+    <br>
+    <table>
+        <!--        <tr><th> City_name </th><th> &nbsp &nbsp Name</th><th> &nbsp &nbsp Check-in Time</th><th> Check-out Time</th></tr>-->
+        <tr><th> City Name </th><th> &nbsp &nbsp Humidity</th>
+            @for(n <- weatherEnergyData){
+        <tr><td> @n.getCity_name  </td> <td> &nbsp &nbsp @n.getHumidity</td></tr>
+        }
+    </table>
+    <div>
+<!--        <input type="button" value="Return to previous page" style="align=center" onclick="window.location.href = '/persondetails';">-->
+        <br><br>
+    </div>
+</div>
+</div>
+<!--//////////////////////-->
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '/',   <!-- url for saving-->
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                 hiChartFunction1(data.names, data.values);
+             },
+            error: function (data) {
+                console.log(" error"+ data);
+            }
+        });
+    });
+    function hiChartFunction1(jsonDataNames, jsonDataValues){
+        Highcharts.chart('HiChart1', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Most Installed Apps'
+            },
+            subtitle: {
+                text: 'Source: Google Play Store</a>'
+            },
+            xAxis: {
+                type: 'category ',
+                categories: jsonDataNames,
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'No of Installations (in millions)    '
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'No of Installations <b>{point.y:.1f} </b> millions'
+            },
+            series: [{
+                name: "values",
+                data: jsonDataValues,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    }
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
+}
