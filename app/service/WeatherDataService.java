@@ -23,10 +23,10 @@ public class WeatherDataService {
     }
 
 
-    public static CityWindDegDto dataSetTable() {
+    public static CityWindDegDto dataWindDegService() {
 
-        CityHumidityDto cityHumidityDto = DataFetchingDao.getWindDegData();
-        return (cityHumidityDto);
+        CityWindDegDto citywindDegDto = DataFetchingDao.getWindDegData();
+        return (citywindDegDto);
 
 
     }

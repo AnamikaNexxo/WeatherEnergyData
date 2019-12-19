@@ -11,12 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataFetchingDao {
-//    public static List<SqlRow> getHumidityData() {
-//        return DbConnector.createSqlQuery("SELECT HUMIDITY,city_name FROM weather_features WHERE DATE(DT_CL)='2015-01-01'").findList();
-//    }
+
 
     public static CityHumidityDto getHumidityData() {
-//        List<SqlRow> rows= DataFetchingDao.getHumidityData();
         List<SqlRow> rows = DbConnector.createSqlQuery("SELECT HUMIDITY,city_name FROM weather_features WHERE DATE(DT_CL)='2015-01-01'").findList();
         CityHumidityDto cityHumidityDto = new CityHumidityDto();
         for (SqlRow row : rows) {
@@ -27,13 +24,11 @@ public class DataFetchingDao {
 
     }
 
-    //    public static List<SqlRow> getPressureData() {
-//        return DbConnector.createSqlQuery("SELECT pressure,city_name FROM weather_features WHERE DATE(DT_CL)='2015-01-01'").findList();
-//    }
+
     public static CityPressureDto getPressureData() {
         List<SqlRow> rows = DbConnector.createSqlQuery("SELECT pressure,city_name FROM weather_features WHERE DATE(DT_CL)='2015-01-01'").findList();
-        List<BigDecimal> pressureList=new ArrayList<>();
-        List<String> cityList=new ArrayList<>();
+        List<BigDecimal> pressureList = new ArrayList<>();
+        List<String> cityList = new ArrayList<>();
         CityPressureDto cityPressureDto = new CityPressureDto();
         for (SqlRow row : rows) {
             pressureList.add(row.getBigDecimal("pressure"));
@@ -46,7 +41,13 @@ public class DataFetchingDao {
     }
 
     public static CityWindDegDto getWindDegData() {
-
+        List<SqlRow> rows = DbConnector.createSqlQuery("SELECT wind_deg,city_name FROM weather_features WHERE DATE(DT_CL)='2015-01-01'").findList();
+        CityWindDegDto cityWindDegDto = new CityWindDegDto();
+        for (SqlRow row : rows) {
+            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
+            cityWindDegDto.setCityName(row.getString("city_name"));
+        }
+        return cityWindDegDto;
 
 
     }
