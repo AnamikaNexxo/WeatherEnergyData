@@ -5,8 +5,6 @@
     <style>
 
 
-
-
     </style>
     <figure class="highcharts-figure">
 
@@ -23,20 +21,26 @@
 
 <body>
 
-<div align="center" style="border-style:solid; border-width:1px; margin:10% auto; width:701px; background-color:lightgrey">
+<div align="center"
+     style="border-style:solid; border-width:1px; margin:10% auto; width:701px; background-color:lightgrey">
     <!--<div class="container-fluid"-->
     <h1>Weather Data</h1>
 
     <br>
     <table>
         <!--        <tr><th> City_name </th><th> &nbsp &nbsp Name</th><th> &nbsp &nbsp Check-in Time</th><th> Check-out Time</th></tr>-->
-        <tr><th> City Name </th><th> &nbsp &nbsp Humidity</th>
+        <tr>
+            <th> City Name</th>
+            <th> &nbsp &nbsp Humidity</th>
             @for(n <- weatherEnergyData){
-        <tr><td> @n.getCity_name  </td> <td> &nbsp &nbsp @n.getHumidity</td></tr>
+        <tr>
+            <td> @n.getCity_name</td>
+            <td> &nbsp &nbsp @n.getHumidity</td>
+        </tr>
         }
     </table>
     <div>
-<!--        <input type="button" value="Return to previous page" style="align=center" onclick="window.location.href = '/persondetails';">-->
+        <!--        <input type="button" value="Return to previous page" style="align=center" onclick="window.location.href = '/persondetails';">-->
         <br><br>
     </div>
 </div>
@@ -110,10 +114,11 @@
     }
 
 
+
+
+
+
 </script>
-
-
-
 
 
 </body>
