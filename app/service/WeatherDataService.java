@@ -2,20 +2,32 @@ package service;
 
 import dao.DataFetchingDao;
 import dto.CityHumidityDto;
+import dto.CityPressureDto;
+import dto.CityWindDegDto;
 
 public class WeatherDataService {
 //TODO: below
 
-    public static CityHumidityDto chartService() {
+    public static CityHumidityDto chartHumidityService() {
 
         CityHumidityDto cityHumidityDto = DataFetchingDao.getHumidityData();
         return (cityHumidityDto);
 
-//        CityHumidityDto cityHumidityDto = DataFetchingDao.getHumidityData();
-//        return Json.toJson(cityHumidityDto);
 
-//     JsonNode json = Json.toJson(cityHumidityDto);
-//     return json;
+    }
+
+    public static CityPressureDto chartPressureService() {
+
+        CityPressureDto cityPressureDto = DataFetchingDao.getPressureData();
+        return (cityPressureDto);
+    }
+
+
+    public static CityWindDegDto dataSetTable() {
+
+        CityHumidityDto cityHumidityDto = DataFetchingDao.getWindDegData();
+        return (cityHumidityDto);
+
 
     }
 

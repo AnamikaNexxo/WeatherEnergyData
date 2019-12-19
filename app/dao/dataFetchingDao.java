@@ -3,6 +3,7 @@ package dao;
 
 import dto.CityHumidityDto;
 import dto.CityPressureDto;
+import dto.CityWindDegDto;
 import io.ebean.SqlRow;
 
 import java.math.BigDecimal;
@@ -44,6 +45,11 @@ public class DataFetchingDao {
 
     }
 
+    public static CityWindDegDto getWindDegData() {
+
+
+
+    }
 }
 
 
