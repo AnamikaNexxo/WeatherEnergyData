@@ -1,6 +1,9 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
+import dto.CityHumidityDto;
+import play.libs.Json;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -15,14 +18,18 @@ public class WeatherDataController extends Controller {
         this.formFactory = formFactory;
     }
 
-public Result chart(Http.Request request){
+    public Result chart(Http.Request request) {
 
-    //TODO: call service to get city pressure DTO
-/*  //TODO: BREAK THE FOLLOWING CODE TO dao AND SERVICES*/
+        //TODO: call service to get city pressure DTO
+        /*  //TODO: BREAK THE FOLLOWING CODE TO dao AND SERVICES*/
 //List<CityHumidityDto> cityHumidityDtos = new ArrayList<>();
 //return ok(WeatherDataService.chartService());
-    return ok(WeatherDataService.chartService());
-}
+        CityHumidityDto cityHumidityDto = WeatherDataService.chartService();
+        JsonNode json = Json.toJson(cityHumidityDto);
+        return ok(json);
+
+
+    }
 
 
 }
