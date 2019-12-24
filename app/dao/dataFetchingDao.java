@@ -79,6 +79,26 @@ public class DataFetchingDao {
         }
         return cityWindDegDto;
     }
+
+
+//    public static WeatherFeaturesModel getWindDegData2() {
+//        List<SqlRow> rows = DbConnector.createSqlQuery(
+//                "SELECT wind_deg,city_name " +
+//                        "FROM weather_features " +
+//                        "WHERE DATE(DT_CL)='2015-01-01'")
+//                .findList();
+//
+//        CityWindDegDto cityWindDegDto = new CityWindDegDto();
+//        for (SqlRow row : rows) {
+//            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
+//            cityWindDegDto.setCityName(row.getString("city_name"));
+//        }
+//        return WeatherFeaturesModel;
+//    }
+
+
+
+
 }
 
 
