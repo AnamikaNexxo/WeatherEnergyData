@@ -14,10 +14,14 @@ public class DataFetchingDao {
 
 
     public static CityHumidityDto getHumidityData() {
+//        List<SqlRow> rows = DbConnector.createSqlQuery(
+//                "SELECT HUMIDITY, city_name " +
+//                        "FROM weather_features " +
+//                        "WHERE DATE(DT_CL)='2015-01-01'")// initial corrrect query
         List<SqlRow> rows = DbConnector.createSqlQuery(
                 "SELECT HUMIDITY, city_name " +
                         "FROM weather_features " +
-                        "WHERE DATE(DT_CL)='2015-01-01'")
+                        "WHERE DT_CL='2015-01-01 02:00:00'")
                 .findList();
 
         List<BigDecimal> humidityList = new ArrayList<>();

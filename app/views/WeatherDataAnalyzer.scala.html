@@ -3,8 +3,6 @@
 @main("Weather Analyser") {
 <!--<h1>Welcome to WeatherData</h1>-->
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +18,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
 </head>
 <!--***************************BODY***************************************************-->
 <body>
@@ -29,9 +25,9 @@
 <div class="jumbotron text-center">
     <h1>Analysed Weather Data</h1>
     <p>Resize this responsive page to see the effect!</p>
-    <div class="jumbotron text-center" style="background-color: pink;"  >
-        <h1>Weather information</h1>
-        <p>Resize this responsive page to see the effect!</p>
+    <div class="jumbotron text-center" style="background-color: pink;">
+        <!--        <h1>Weather information</h1>-->
+        <!--        <p>Resize this responsive page to see the effect!</p>-->
         <figure class="highcharts-figure">
 
             <div id="HiChart1"></div>
@@ -40,68 +36,107 @@
 </div>
 <!-------------------------main Body--------------------------->
 
-<!-- ------------------------------<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>
-        <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>
-    </div>
-</div>
-                                      <div class="container">-------------------------------------------------------------------  -->
-
 
 <div class="container">
     <div class="row">
 
 
         <div class="col-sm-4">
-            <h3>Select City</h3>
+            <h3>Chart Type</h3>
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Cities
+                    Charts
                 </button>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p> -->
+
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">City 1</a>
-                    <a class="dropdown-item" href="#">City 2</a>
-                    <a class="dropdown-item" href="#">City 3</a>
+                    <a class="dropdown-item" href="#">Line Chart</a>
+                    <a class="dropdown-item" href="#">Area Chart</a>
+                    <a class="dropdown-item" href="#">Column Chart</a>
+                    <a class="dropdown-item" href="#">Bar Chart</a>
+                    <a class="dropdown-item" href="#">Radial Bar Charts</a>
+                    <a class="dropdown-item" href="#">Scatter Chart</a>
+                    <a class="dropdown-item" href="#">Bubble Chart</a>
+                    <a class="dropdown-item" href="#">Combination Chart</a>
+                    <a class="dropdown-item" href="#">Styled Mode Chart</a>
+                    <a class="dropdown-item" href="#">Accessible Mode Chart</a>
+                    <a class="dropdown-item" href="#">Dynamic Chart</a>
+                    <a class="dropdown-item" href="#">3D Chart</a>
+                    <a class="dropdown-item" href="#">Heat Map Chart</a>
+                    <a class="dropdown-item" href="#">Tree Map Charts</a>
+                    <a class="dropdown-item" href="#">Polar Charts</a>
+                    <a class="dropdown-item" href="#">Spider Web Charts</a>
+                    <a class="dropdown-item" href="#">SunBurts Charts</a>
+                    <a class="dropdown-item" href="#">Wind Rose Charts</a>
+                    <a class="dropdown-item" href="#">Parallel Coordinates Charts</a>
+                    <a class="dropdown-item" href="#">Venn Diagram Charts</a>
+                    <a class="dropdown-item" href="#">Euler Diagram Charts</a>
+
+
                 </div>
             </div>
         </div>
 
+        <!--        <div class="col-sm-4">-->
+        <!--            <h3>Select City</h3>-->
+        <!--            <div class="dropdown">-->
+        <!--                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">-->
+        <!--                    Cities-->
+        <!--                </button>-->
+
+        <!--                <div class="dropdown-menu">-->
+        <!--                    <a class="dropdown-item" href="#">City 1</a>-->
+        <!--                    <a class="dropdown-item" href="#">City 2</a>-->
+        <!--                    <a class="dropdown-item" href="#">City 3</a>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
         <div class="col-sm-4">
-            <h3>Select Weather Feature</h3>
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p> -->
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Weather Feature
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Feature 1</a> <!-- dynamically fetch the list weather factor list from the table -->
-                    <a class="dropdown-item" href="#">Feature 2</a>
-                    <a class="dropdown-item" href="#">Feature 3</a>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-10">
+                        <h3>City</h3>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Cities
+                            </button>
+                            <div class="dropdown-menu">   <!-- dynamically fetch the list CITY list from the table -->
+                                <a class="dropdown-item" href="#">City 1</a>
+                                <a class="dropdown-item" href="#">City 2</a>
+                                <a class="dropdown-item" href="#">City 3</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10">
+                        <BR>
+                        <br>
+                    </div>
+
+
+                    <div class="col-sm-10">
+                        <h3>Weather Feature</h3>
+
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Weather Feature
+                            </button>
+                            <div class="dropdown-menu">
+                                <!-- dynamically fetch the list weather FACTOR list from the table -->
+                                <a class="dropdown-item" href="#">Feature 1</a>
+                                <a class="dropdown-item" href="#">Feature 2</a>
+                                <a class="dropdown-item" href="#">Feature 3</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="col-sm-4">
             <h3>Select Time Period</h3>
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p> -->
             <!-- <div class="dropdown"> -->
             <div class="container">
                 <div class="row">
@@ -120,7 +155,8 @@
                             <div class="form-group">
                                 <label for="example-datetime-local-input" class="col-form-label">To Time :</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+                                           id="example-datetime-local-input">
                                 </div>
                             </div>
 
@@ -133,29 +169,15 @@
         </div>
 
 
-
-
     </div>
 </div>
-
-
 <!-------------------------Script section--------------------------->
-
-<!-- <script >
-    $( document ).ready(function() {
-  // Date Time Picker Initialization
-  $('.date-time').datePicker();
-});
-</script> -->
-
 <script>
+//-----script1---------------------------
     $(function(){
     $('#datepicker').datepicker();
     })
-</script>
-
-
-<script>
+//-----script2----------------------------
     $(document).ready(function(){
         $.ajax({
             url: '/humidityChartControl',   <!-- url for saving-->
@@ -223,16 +245,27 @@
         });
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
-
-<!-- ---------------------------import Script---------------------------- -->
-
+---------------------------import Script----------------------------
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
 </body>
 </html>
 
