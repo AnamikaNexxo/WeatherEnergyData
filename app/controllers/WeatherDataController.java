@@ -13,6 +13,7 @@ import play.mvc.Result;
 import service.WeatherDataService;
 
 public class WeatherDataController extends Controller {
+
     private FormFactory formFactory;
 
     @Inject

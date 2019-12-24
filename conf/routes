@@ -11,3 +11,4 @@ GET     /assets/*file           controllers.Assets.versioned(path="/public", fil
 GET     /humidityChartControl                controllers.WeatherDataController.humidityChartControl(request: Request)
 GET     /pressureChartControl                controllers.WeatherDataController.pressureChartControl(request: Request)
 GET     /windDegChartControl                 controllers.WeatherDataController.windDegChartControl(request: Request)
+

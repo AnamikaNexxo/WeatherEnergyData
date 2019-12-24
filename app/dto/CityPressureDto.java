@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CityPressureDto {
+
     private List<String> cityNames = new ArrayList<>();
     private List<BigDecimal> pressureValues = new ArrayList<>();
 
@@ -22,5 +23,13 @@ public class CityPressureDto {
 
     public void setPressureValues(List<BigDecimal> pressureValues) {
         this.pressureValues = pressureValues;
+    }
+
+    @Override
+    public String toString() {
+        return "CityPressureDto{" +
+                "cityNames=" + cityNames +
+                ", pressureValues=" + pressureValues +
+                '}';
     }
 }
