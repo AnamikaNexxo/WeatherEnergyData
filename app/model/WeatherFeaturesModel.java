@@ -1,6 +1,7 @@
 package model;
 
 import io.ebean.Finder;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -70,7 +71,7 @@ public class WeatherFeaturesModel {
 //    private String dtCl;
 
     @Column(name = "dt_cl")
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dtCl;
 
     public Integer getId() {

@@ -5,6 +5,7 @@ import dto.CityHumidityDto;
 import dto.CityPressureDto;
 import dto.CityWindDegDto;
 import io.ebean.SqlRow;
+import model.WeatherDataSetModel;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class DataFetchingDao {
     public static CityWindDegDto getWindDegData() {
         List<SqlRow> rows = DbConnector.createSqlQuery(
                 "SELECT wind_deg,city_name " +
-                "FROM weather_features " +
+                        "FROM weather_features " +
                         "WHERE DATE(DT_CL)='2015-01-01'")
                 .findList();
 
@@ -81,29 +82,28 @@ public class DataFetchingDao {
     }
 
 
-//    public static WeatherFeaturesModel getWindDegData2() {
-//        List<SqlRow> rows = DbConnector.createSqlQuery(
-//                "SELECT wind_deg,city_name " +
-//                        "FROM weather_features " +
-//                        "WHERE DATE(DT_CL)='2015-01-01'")
-//                .findList();
+    public static List<WeatherDataSetModel> getWindDegData2() {
+
+        List<WeatherDataSetModel> rows = WeatherDataSetModel.find.query().where() .select("id," +
+                        "city_name,humidity," +
+                        "dt_cl").findList();
+
+        return  
+
+    }
+
+//        List<CityWeatherDataSetDto> dataList = new ArrayList<>();
 //
-//        CityWindDegDto cityWindDegDto = new CityWindDegDto();
-//        for (SqlRow row : rows) {
-//            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
-//            cityWindDegDto.setCityName(row.getString("city_name"));
+//        for (WeatherFeaturesModel row : rows) {
+//            CityWeatherDataSetDto cityWeatherDataSetDto = new CityWeatherDataSetDto();
+//            cityWeatherDataSetDto.setId(row.getId(id));
+//            cityWeatherDataSetDto.setCityName(row.getCityName(cityName));
+//            cityWeatherDataSetDto.setHumidityValue(row.getHumidity(humidityValue));
+//            cityWeatherDataSetDto.setDateTime(row.getDtCl(dateTime));
+//            dataList.add(cityWeatherDataSetDto);
 //        }
-//        return WeatherFeaturesModel;
-//    }
 
 
 
 
 }
-
-
-
-
-
-
-
