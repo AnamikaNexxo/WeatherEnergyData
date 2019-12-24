@@ -32,10 +32,6 @@ public class DataFetchingDao {
         return cityHumidityDto;
     }
 
-
-
-
-
 //        CityHumidityDto cityHumidityDto = new CityHumidityDto();
 //        for (SqlRow row : rows) {
 //            cityHumidityDto.setHumidityValue(row.getBigDecimal("HUMIDITY"));

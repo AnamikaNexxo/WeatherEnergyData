@@ -15,7 +15,21 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
+//        return ok(views.html.index.render());
         return ok(views.html.WeatherData.render());
     }
+
+    public Result WeatherDataAnalyzer() {
+        return ok(views.html.WeatherDataAnalyzer.render());
+    }
+//
+//    public Result displayHumidityData() {
+//        return ok(views.html.WeatherData.render());
+//    }
+//
+//    public Result displayPressureData() {
+//        return ok(views.html.WeatherData.render());
+//    }
+
 
 }
