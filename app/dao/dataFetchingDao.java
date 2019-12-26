@@ -5,24 +5,26 @@ import dto.CityHumidityDto;
 import dto.CityPressureDto;
 import dto.CityWindDegDto;
 import io.ebean.SqlRow;
-import model.WeatherDataSetModel;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataFetchingDao {
 
 
     public static CityHumidityDto getHumidityData() {
-//        List<SqlRow> rows = DbConnector.createSqlQuery(
-//                "SELECT HUMIDITY, city_name " +
-//                        "FROM weather_features " +
-//                        "WHERE DATE(DT_CL)='2015-01-01'")// initial corrrect query
         List<SqlRow> rows = DbConnector.createSqlQuery(
                 "SELECT HUMIDITY, city_name " +
                         "FROM weather_features " +
-                        "WHERE DT_CL='2015-01-01 02:00:00'")
+                        "WHERE DATE(DT_CL)='2015-01-01'")// initial corrrect
+        // query
+//        List<SqlRow> rows = DbConnector.createSqlQuery(
+//                "SELECT HUMIDITY, city_name " +
+//                        "FROM weather_features " +
+//                        "WHERE DT_CL='2015-01-01 02:00:00'")
                 .findList();
 
         List<BigDecimal> humidityList = new ArrayList<>();
@@ -81,16 +83,42 @@ public class DataFetchingDao {
         return cityWindDegDto;
     }
 
+    public static Map<String,List<BigDecimal>> getCityHumidityScores(List<String> cityNames) {
+        Map<String, List<BigDecimal>> cityMap = new HashMap<>();
+        for (String name: cityNames){
+            String query = "Select HUMIDITY from weather_features where " +
+                    "city_name= "+name;
+            List<SqlRow> rows =
+                    DbConnector.createSqlQuery(query).findList();
+            List<BigDecimal> humidity = new ArrayList<>();
+            for(SqlRow row: rows){
+                humidity.add(row.getBigDecimal("HUMIDITY"));
+            }
+            cityMap.put(name, humidity);
+        }
+        return cityMap;
+    }
 
-    public static List<WeatherDataSetModel> getWindDegData2() {
+    public static List<String> getCityNames() {
+        List<SqlRow> rows = DbConnector.createSqlQuery(
+                "SELECT distinct city_name " +
+                        "FROM weather_features ")
+                .findList();
 
-        List<WeatherDataSetModel> rows = WeatherDataSetModel.find.query().where() .select("id," +
-                        "city_name,humidity," +
-                        "dt_cl").findList();
 
-        return  
 
     }
+
+
+//    public static List<WeatherDataSetModel> getWindDegData2() {
+//
+//        List<WeatherDataSetModel> rows = WeatherDataSetModel.find.query().where() .select("id," +
+//                        "city_name,humidity," +
+//                        "dt_cl").findList();
+//
+//        return
+//
+//    }
 
 //        List<CityWeatherDataSetDto> dataList = new ArrayList<>();
 //
