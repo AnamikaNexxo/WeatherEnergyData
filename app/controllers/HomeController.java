@@ -16,7 +16,7 @@ public class HomeController extends Controller {
      */
     public Result index() {
 //        return ok(views.html.index.render());
-        return ok(views.html.WeatherData.render());
+        return ok(views.html.WeatherDataTest.render());
     }
 
     public Result WeatherDataAnalyzer() {

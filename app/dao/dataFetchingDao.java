@@ -2,9 +2,8 @@
 package dao;
 
 import dto.CityHumidityDto;
-import dto.CityPressureDto;
-import dto.CityWindDegDto;
 import io.ebean.SqlRow;
+import play.Logger;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -48,44 +47,10 @@ public class DataFetchingDao {
 //    }
 
 
-    public static CityPressureDto getPressureData() {
-        List<SqlRow> rows = DbConnector.createSqlQuery(
-                "SELECT pressure,city_name " +
-                        "FROM weather_features " +
-                        "WHERE DATE(DT_CL)='2015-01-01'")
-                .findList();
 
-        List<BigDecimal> pressureList = new ArrayList<>();
-        List<String> cityList = new ArrayList<>();
-        CityPressureDto cityPressureDto = new CityPressureDto();
-        for (SqlRow row : rows) {
-            pressureList.add(row.getBigDecimal("pressure"));
-            cityList.add(row.getString("city_name"));
-        }
-        cityPressureDto.setPressureValues(pressureList);
-        cityPressureDto.setCityNames(cityList);
-        return cityPressureDto;
-    }
-
-
-    public static CityWindDegDto getWindDegData() {
-        List<SqlRow> rows = DbConnector.createSqlQuery(
-                "SELECT wind_deg,city_name " +
-                        "FROM weather_features " +
-                        "WHERE DATE(DT_CL)='2015-01-01'")
-                .findList();
-
-        CityWindDegDto cityWindDegDto = new CityWindDegDto();
-        for (SqlRow row : rows) {
-            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
-            cityWindDegDto.setCityName(row.getString("city_name"));
-        }
-        return cityWindDegDto;
-    }
-
-    public static List<Map<String, List<BigDecimal>>> getCityHumidityScores(List<String> cityNames) {
+    public static Map<String, List<BigDecimal>> getCityHumidityScores(List<String> cityNames) {
         Map<String, List<BigDecimal>> cityMap = new HashMap<>();
-        List<Map<String, List<BigDecimal>>> cityHumidity = new ArrayList<>();
+//        List<Map<String, List<BigDecimal>>> cityHumidity = new ArrayList<>();
         for (String name : cityNames) {
             String query = "Select HUMIDITY from weather_features where " +
                     "city_name= '" + name + "' and DATE(dt_cl)" +
@@ -97,9 +62,10 @@ public class DataFetchingDao {
                 humidity.add(row.getBigDecimal("HUMIDITY"));
             }
             cityMap.put(name, humidity);
-            cityHumidity.add(cityMap);
+            Logger.info("cityMap::{}", cityMap);
+//            cityHumidity.add(cityMap);
         }
-        return cityHumidity;
+        return cityMap;
     }
 
     public static List<String> getCityNames() {
@@ -115,6 +81,44 @@ public class DataFetchingDao {
 
     }
 
+
+
+
+//    public static CityPressureDto getPressureData() {
+//        List<SqlRow> rows = DbConnector.createSqlQuery(
+//                "SELECT pressure,city_name " +
+//                        "FROM weather_features " +
+//                        "WHERE DATE(DT_CL)='2015-01-01'")
+//                .findList();
+//
+//        List<BigDecimal> pressureList = new ArrayList<>();
+//        List<String> cityList = new ArrayList<>();
+//        CityPressureDto cityPressureDto = new CityPressureDto();
+//        for (SqlRow row : rows) {
+//            pressureList.add(row.getBigDecimal("pressure"));
+//            cityList.add(row.getString("city_name"));
+//        }
+//        cityPressureDto.setPressureValues(pressureList);
+//        cityPressureDto.setCityNames(cityList);
+//        return cityPressureDto;
+//    }
+//
+//
+//    public static CityWindDegDto getWindDegData() {
+//        List<SqlRow> rows = DbConnector.createSqlQuery(
+//                "SELECT wind_deg,city_name " +
+//                        "FROM weather_features " +
+//                        "WHERE DATE(DT_CL)='2015-01-01'")
+//                .findList();
+//
+//        CityWindDegDto cityWindDegDto = new CityWindDegDto();
+//        for (SqlRow row : rows) {
+//            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
+//            cityWindDegDto.setCityName(row.getString("city_name"));
+//        }
+//        return cityWindDegDto;
+//    }
+//
 
 //    public static List<WeatherDataSetModel> getWindDegData2() {
 //

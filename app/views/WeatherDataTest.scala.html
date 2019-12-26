@@ -1,0 +1,124 @@
+@******   @(weatherEnergyData: List[dto.WeatherDataDto])********@
+@main("weather data") {
+<html>
+<head>
+    <style>
+
+
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+</head>
+
+<body>
+
+<div> <h1>Weather Data Analyser Test</h1>
+
+<figure class="highcharts-figure">
+
+    <div id="HiChart1"></div>
+</figure>
+</div>
+
+</div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '/humidityChartControl',   <!-- url for saving-->
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+             if(data != null && data != 'undefined') {
+                    var series = [];
+                    var item;
+                    $.each(data, function(key,value){
+                       item = {
+                                'name' : key,
+                                'data' : value
+                              }
+                        series.push(item);
+                    });
+
+                    hiChartFunction1(series);
+                }
+             },
+            error: function (data) {
+                console.log(" error"+ data);
+            }
+        });
+    });
+    function hiChartFunction1(dynamicSeries){
+
+    alert('JSON> '+ JSON.stringify(dynamicSeries));
+        Highcharts.chart('HiChart1', {
+
+    title: {
+        text: 'Humidity Data Analysis'
+    },
+
+    subtitle: {
+        text: 'Source: Google Play Store'
+    },
+  yAxis: {
+        title: {
+            text: 'Humidity Value'
+        }
+    },
+
+    xAxis: {
+        accessibility: {
+            rangeDescription: 'Cities'
+        }
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: dynamicSeries,
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+
+    }
+
+</script>
+
+
+</body>
+</html>
+}
