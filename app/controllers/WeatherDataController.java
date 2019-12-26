@@ -2,7 +2,6 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
-import dto.CityHumidityDto;
 import dto.CityPressureDto;
 import dto.CityWindDegDto;
 import play.data.FormFactory;
@@ -11,6 +10,10 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import service.WeatherDataService;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 public class WeatherDataController extends Controller {
 
@@ -22,8 +25,11 @@ public class WeatherDataController extends Controller {
     }
 
     public Result humidityChartControl(Http.Request request) {
-        CityHumidityDto cityHumidityDto = WeatherDataService.chartHumidityService();
-        JsonNode json = Json.toJson(cityHumidityDto);
+//        CityHumidityDto cityHumidityDto =
+//                WeatherDataService.chartHumidityService();
+        Map<String, List<BigDecimal>> citiDataValues=
+                WeatherDataService.chartHumidityService();
+        JsonNode json = Json.toJson(citiDataValues);
         return ok(json);
     }
 

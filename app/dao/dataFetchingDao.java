@@ -83,9 +83,9 @@ public class DataFetchingDao {
         return cityWindDegDto;
     }
 
-    public static Map<String,List<BigDecimal>> getCityHumidityScores(List<String> cityNames) {
+    public static Map<String,List<BigDecimal>> getCityHumidityScores(List<SqlRow> cityNames) {
         Map<String, List<BigDecimal>> cityMap = new HashMap<>();
-        for (String name: cityNames){
+        for (SqlRow name: cityNames){
             String query = "Select HUMIDITY from weather_features where " +
                     "city_name= "+name;
             List<SqlRow> rows =
@@ -94,18 +94,20 @@ public class DataFetchingDao {
             for(SqlRow row: rows){
                 humidity.add(row.getBigDecimal("HUMIDITY"));
             }
-            cityMap.put(name, humidity);
+            cityMap.put(name.toString(), humidity);
         }
         return cityMap;
     }
 
-    public static List<String> getCityNames() {
+    public static List<SqlRow> getCityNames() {
         List<SqlRow> rows = DbConnector.createSqlQuery(
                 "SELECT distinct city_name " +
                         "FROM weather_features ")
                 .findList();
-
-
+//         List<String> cityList = new ArrayList<>();
+        return rows;
+//        for (SqlRow row : rows) {
+//         cityList.add(row.getString("city_name"));
 
     }
 
