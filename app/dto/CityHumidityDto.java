@@ -4,9 +4,10 @@ package dto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CityHumidityDto {
-
+    private Map<String, List<BigDecimal>> cityHumidity;
     private List<String> cityName= new ArrayList<>();
     private List<BigDecimal> humidityValue=new ArrayList<>();;
 

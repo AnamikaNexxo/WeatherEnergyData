@@ -4,7 +4,6 @@ import dao.DataFetchingDao;
 import dto.CityHumidityDto;
 import dto.CityPressureDto;
 import dto.CityWindDegDto;
-import io.ebean.SqlRow;
 import play.Logger;
 
 import java.math.BigDecimal;
@@ -14,10 +13,11 @@ import java.util.Map;
 public class WeatherDataService {
 
 
-    public static Map<String, List<BigDecimal>> chartHumidityService() {
+    public static List<Map<String, List<BigDecimal>>> chartHumidityService() {
         CityHumidityDto cityHumidityDto = DataFetchingDao.getHumidityData();
-        List<SqlRow> cityNames = DataFetchingDao.getCityNames();
-        Map<String, List<BigDecimal>> cityMap =
+        List<String> cityNames = DataFetchingDao.getCityNames();
+        Logger.info("cityNames::{}", cityNames);
+        List<Map<String, List<BigDecimal>>> cityMap =
                 DataFetchingDao.getCityHumidityScores(cityNames);
 
         return (cityMap);
