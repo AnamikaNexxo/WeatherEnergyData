@@ -2,6 +2,7 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
+import dto.CityPressureDto;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -31,18 +32,14 @@ public class WeatherDataController extends Controller {
         return ok(json);
     }
 
-
-
-
+//Pressure Data
+    public Result pressureChartControl(Http.Request request) {
+        CityPressureDto cityPressureDto = WeatherDataService.chartPressureService();
+        JsonNode json = Json.toJson(cityPressureDto);
+        return ok(json);
+    }
 
 //API with bugs
-//    public Result pressureChartControl(Http.Request request) {
-//        CityPressureDto cityPressureDto = WeatherDataService.chartPressureService();
-//        JsonNode json = Json.toJson(cityPressureDto);
-//        return ok(json);
-//    }
-//
-//
 //    public Result windDegChartControl(Http.Request request) {
 //        CityWindDegDto cityWindDegDto = WeatherDataService.dataWindDegService();
 //        JsonNode json = Json.toJson(cityWindDegDto);

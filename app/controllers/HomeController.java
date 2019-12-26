@@ -14,22 +14,32 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
-    public Result index() {
+    public Result index() {// not working
 //        return ok(views.html.index.render());
+        return ok(views.html.WeatherData.render());
+    }
+
+    public Result humidityDataLineChart() {
         return ok(views.html.WeatherDataTest.render());
     }
 
-    public Result WeatherDataAnalyzer() {
-        return ok(views.html.WeatherDataAnalyzer.render());
+    public Result displayPressureData() {
+        return ok(views.html.PressureData.render());
     }
+
+    //    public Result WeatherDataAnalyzer() {
+//        return ok(views.html.WeatherData.render());
+//    }
+
+//    public Result WeatherDataAnalyzer() {
+//        return ok(views.html.WeatherData.render());
+//    }
 //
 //    public Result displayHumidityData() {
 //        return ok(views.html.WeatherData.render());
 //    }
 //
-//    public Result displayPressureData() {
-//        return ok(views.html.WeatherData.render());
-//    }
 
+//working
 
 }

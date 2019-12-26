@@ -2,6 +2,7 @@
 package dao;
 
 import dto.CityHumidityDto;
+import dto.CityPressureDto;
 import io.ebean.SqlRow;
 import play.Logger;
 
@@ -84,24 +85,25 @@ public class DataFetchingDao {
 
 
 
-//    public static CityPressureDto getPressureData() {
-//        List<SqlRow> rows = DbConnector.createSqlQuery(
-//                "SELECT pressure,city_name " +
-//                        "FROM weather_features " +
-//                        "WHERE DATE(DT_CL)='2015-01-01'")
-//                .findList();
-//
-//        List<BigDecimal> pressureList = new ArrayList<>();
-//        List<String> cityList = new ArrayList<>();
-//        CityPressureDto cityPressureDto = new CityPressureDto();
-//        for (SqlRow row : rows) {
-//            pressureList.add(row.getBigDecimal("pressure"));
-//            cityList.add(row.getString("city_name"));
-//        }
-//        cityPressureDto.setPressureValues(pressureList);
-//        cityPressureDto.setCityNames(cityList);
-//        return cityPressureDto;
-//    }
+    public static CityPressureDto getPressureData() {
+        //pressure Data for a particular Time instant
+        List<SqlRow> rows = DbConnector.createSqlQuery(
+                "SELECT pressure,city_name " +
+                        "FROM weather_features " +
+                        "WHERE DT_CL='2015-01-01 02:00:00'")
+                .findList();
+
+        List<BigDecimal> pressureList = new ArrayList<>();
+        List<String> cityList = new ArrayList<>();
+        CityPressureDto cityPressureDto = new CityPressureDto();
+        for (SqlRow row : rows) {
+            pressureList.add(row.getBigDecimal("pressure"));
+            cityList.add(row.getString("city_name"));
+        }
+        cityPressureDto.setPressureValues(pressureList);
+        cityPressureDto.setCityNames(cityList);
+        return cityPressureDto;
+    }
 //
 //
 //    public static CityWindDegDto getWindDegData() {

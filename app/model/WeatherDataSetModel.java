@@ -22,6 +22,9 @@ public class WeatherDataSetModel {
     @Column(name = "humidity")
     private Integer humidity;
 
+    @Column(name = "pressure")
+    private Integer pressure;
+
     @Column(name = "dt_cl")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dtCl;
@@ -54,14 +57,19 @@ public class WeatherDataSetModel {
         return dtCl;
     }
 
+    public Integer getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(Integer pressure) {
+        this.pressure = pressure;
+    }
+
     public void setDtCl(Date dtCl) {
         this.dtCl = dtCl;
     }
 
     public static final Finder<Integer, WeatherDataSetModel> find = new Finder<>(WeatherDataSetModel.class);
-
-
-
 
 
 }

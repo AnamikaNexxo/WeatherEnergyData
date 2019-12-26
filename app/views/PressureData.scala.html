@@ -3,8 +3,6 @@
 <html>
 <head>
     <style>
-
-
     </style>
 
     <meta charset="utf-8">
@@ -21,40 +19,12 @@
 
 <div> <h1>Weather Data Analyser Test</h1>
 
-<figure class="highcharts-figure">
+    <figure class="highcharts-figure">
 
-    <div id="HiChart1"></div>
-</figure>
+        <div id="HiChart1"></div>
+    </figure>
 </div>
 
-@****
-<!--<div align="center"-->
-<!--     style="border-style:solid; border-width:1px; margin:10% auto; width:701px; background-color:lightgrey">-->
-<!--    &lt;!&ndash;<div class="container-fluid"&ndash;&gt;-->
-<!--    <h1>Weather Data</h1>-->
-
-<!--    <br>-->
-
-<!--<table>-->
-<!--        &lt;!&ndash;        <tr><th> City_name </th><th> &nbsp &nbsp Name</th><th> &nbsp &nbsp Check-in Time</th><th> Check-out Time</th></tr>&ndash;&gt;-->
-<!--        <tr>-->
-<!--            <th> City Name</th>-->
-<!--            <th> &nbsp &nbsp Humidity</th>-->
-<!--            @for(n <- weatherEnergyData){-->
-<!--        <tr>-->
-<!--            <td> @n.getCity_name</td>-->
-<!--            <td> &nbsp &nbsp @n.getHumidity</td>-->
-<!--        </tr>-->
-<!--        }-->
-<!--    </table>-->
-<!--    <div>-->
-        <!--        <input type="button" value="Return to previous page" style="align=center" onclick="window.location.href = '/persondetails';">-->
-<!--        <br><br>-->
-<!--    </div>-->
-
-    *************@
-</div>
-</div>
 
 <script>
     $(document).ready(function(){
@@ -64,7 +34,7 @@
             type: "GET",
             success: function (data) {
                 console.log("success"+ data);
-                 hiChartFunction1(data.cityName, data.humidityValue);
+                 hiChartFunction1(data.cityNames, data.pressureValues);
              },
             error: function (data) {
                 console.log(" error"+ data);
@@ -77,13 +47,13 @@
                 type: 'column'
             },
             title: {
-                text: 'Humidity Analysis'
+                text: 'Pressure Analysis'
             },
             subtitle: {
                 text: 'Source: Google Play Store</a>'
             },
             xAxis: {
-                type: 'cityName',
+                type: 'cityNames',
                 categories: jsonDataNames,
                 labels: {
                     rotation: -45,
@@ -96,17 +66,17 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Humidity Values'
+                    text: 'Pressure Values'
                 }
             },
             legend: {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'No of Installations <b>{point.y:.1f} </b> millions'
+                pointFormat: 'Pressure Values <b>{point.y:.1f} </b> pressureUnit'
             },
             series: [{
-                name: "humidityValue",
+                name: "pressureValues",
                 data: jsonDataValues,
                 dataLabels: {
                     enabled: true,
