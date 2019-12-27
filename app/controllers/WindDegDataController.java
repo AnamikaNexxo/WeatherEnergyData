@@ -20,8 +20,8 @@ public class WindDegDataController extends Controller {
         this.formFactory = formFactory;
     }
 
-    //windDegDataSet
-    //windDegChartControl
+
+    //get- windDegChartControl
         public Result windDegChartControl(Http.Request request) {
          List<CityWindDegDto> cityWindDegDto = WindDegDataService.WindDegData();
         JsonNode json = Json.toJson(cityWindDegDto);

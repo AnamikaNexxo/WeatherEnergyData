@@ -14,9 +14,9 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
-    public Result index() {// not working
-//        return ok(views.html.index.render());
-        return ok(views.html.WeatherDataTest.render());
+    public Result index() {
+        return ok(views.html.index.render());
+//        return ok(views.html.WeatherDataTest.render());// not working
     }
 
     public Result humidityDataLineChart() {
@@ -31,36 +31,5 @@ public class HomeController extends Controller {
         return ok(views.html.WindDataSetTable.render());
     }
 
-////activate
-//    public Result windDegDataSet() {
-//        return ok(views.html.WeatherData.render());
-//    }
 }
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////
-
-    //    public Result WeatherDataAnalyzer() {
-//        return ok(views.html.WeatherData.render());
-//    }
-
-//    public Result WeatherDataAnalyzer() {
-//        return ok(views.html.WeatherData.render());
-//    }
-//
-//    public Result displayHumidityData() {
-//        return ok(views.html.WeatherData.render());
-//    }
-//
-
-//working
-
 

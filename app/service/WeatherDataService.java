@@ -28,20 +28,5 @@ public class WeatherDataService {
         return (cityPressureDto);
     }
 
-
-
-
-
 }
 
-
-
-
-
-
-////////////////////////////////////////
-//Wrong API
-//    public static CityWindDegDto dataWindDegService() {
-//        CityWindDegDto citywindDegDto = DataFetchingDao.getWindDegData();
-//        return (citywindDegDto);
-//    }

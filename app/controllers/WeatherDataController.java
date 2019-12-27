@@ -39,13 +39,6 @@ public class WeatherDataController extends Controller {
         return ok(json);
     }
 
-//API with bugs
-//    public Result windDegChartControl(Http.Request request) {
-//        CityWindDegDto cityWindDegDto = WeatherDataService.dataWindDegService();
-//        JsonNode json = Json.toJson(cityWindDegDto);
-//        return ok(json);
-//
-//
-//    }
+
 
 }
