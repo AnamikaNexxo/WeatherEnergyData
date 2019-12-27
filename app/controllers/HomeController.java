@@ -16,16 +16,37 @@ public class HomeController extends Controller {
      */
     public Result index() {// not working
 //        return ok(views.html.index.render());
-        return ok(views.html.WeatherData.render());
+        return ok(views.html.WeatherDataTest.render());
     }
 
     public Result humidityDataLineChart() {
-        return ok(views.html.WeatherDataTest.render());
+        return ok(views.html.HumidityChartView.render());
     }
 
     public Result displayPressureData() {
         return ok(views.html.PressureData.render());
     }
+
+    public Result windDegDataSet() {
+        return ok(views.html.WindDataSetTable.render());
+    }
+
+////activate
+//    public Result windDegDataSet() {
+//        return ok(views.html.WeatherData.render());
+//    }
+}
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
 
     //    public Result WeatherDataAnalyzer() {
 //        return ok(views.html.WeatherData.render());
@@ -42,4 +63,4 @@ public class HomeController extends Controller {
 
 //working
 
-}
+

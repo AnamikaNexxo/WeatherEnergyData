@@ -30,10 +30,18 @@ public class WeatherDataService {
 
 
 
-    //Wrong API
+
+
+}
+
+
+
+
+
+
+////////////////////////////////////////
+//Wrong API
 //    public static CityWindDegDto dataWindDegService() {
 //        CityWindDegDto citywindDegDto = DataFetchingDao.getWindDegData();
 //        return (citywindDegDto);
 //    }
-
-}

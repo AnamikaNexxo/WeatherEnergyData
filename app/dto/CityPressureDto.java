@@ -9,6 +9,7 @@ public class CityPressureDto {
     private List<String> cityNames = new ArrayList<>();
     private List<BigDecimal> pressureValues = new ArrayList<>();
 
+
     public List<String> getCityNames() {
         return cityNames;
     }
