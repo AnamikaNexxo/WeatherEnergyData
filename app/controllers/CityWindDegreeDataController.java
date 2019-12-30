@@ -12,17 +12,17 @@ import service.WindDegDataService;
 
 import java.util.List;
 
-public class WindDegDataController extends Controller {
+public class CityWindDegreeDataController extends Controller {
     private FormFactory formFactory;
 
     @Inject
-    public WindDegDataController(FormFactory formFactory) {
+    public CityWindDegreeDataController(FormFactory formFactory) {
         this.formFactory = formFactory;
     }
 
 
     //get- windDegChartControl
-    public Result windDegChartControl(Http.Request request) {
+    public Result cityWindDegreeChartControl(Http.Request request) {
         List<CityWindDegDto> cityWindDegDto = WindDegDataService.WindDegData();
         JsonNode json = Json.toJson(cityWindDegDto);
         return ok(json);

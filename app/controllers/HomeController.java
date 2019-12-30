@@ -19,16 +19,16 @@ public class HomeController extends Controller {
 //        return ok(views.html.WeatherDataTest.render());// not working
     }
 
-    public Result humidityDataLineChart() {
-        return ok(views.html.HumidityChartView.render());
+    public Result cityHumidityDataLineChartDisplay() {
+        return ok(views.html.humidityChartView.render());
     }
 
-    public Result displayPressureData() {
-        return ok(views.html.PressureData.render());
+    public Result cityPressureDataChartDisplay() {
+        return ok(views.html.pressureDataTableView.render());
     }
 
-    public Result windDegDataSet() {
-        return ok(views.html.WindDataSetTable.render());
+    public Result cityWindDegreeDataTableDisplay() {
+        return ok(views.html.windDataSetTableView.render());
     }
 
 }

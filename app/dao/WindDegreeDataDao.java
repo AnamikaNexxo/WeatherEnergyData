@@ -6,9 +6,9 @@ import io.ebean.SqlRow;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindDegDataDao {
+public class WindDegreeDataDao {
 
-     public static List<CityWindDegDto>  getWindDegData() {
+     public static List<CityWindDegDto> getCityWindDegreeData() {
 
 // Query 1 - large amount of Data is being fetched and takes time
 //        List<SqlRow> data = DbConnector.createSqlQuery(

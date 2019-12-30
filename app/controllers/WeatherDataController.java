@@ -23,7 +23,7 @@ public class WeatherDataController extends Controller {
         this.formFactory = formFactory;
     }
 
-    public Result humidityChartControl(Http.Request request) {
+    public Result cityHumidityChartControl(Http.Request request) {
 //        CityHumidityDto cityHumidityDto =
 //                WeatherDataService.chartHumidityService();
         Map<String, List<BigDecimal>> citiDataValues=
@@ -33,7 +33,7 @@ public class WeatherDataController extends Controller {
     }
 
 //Pressure Data
-    public Result pressureChartControl(Http.Request request) {
+    public Result cityPressureChartControl(Http.Request request) {
         CityPressureDto cityPressureDto = WeatherDataService.chartPressureService();
         JsonNode json = Json.toJson(cityPressureDto);
         return ok(json);
