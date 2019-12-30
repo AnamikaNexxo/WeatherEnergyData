@@ -12,7 +12,7 @@ import java.util.Map;
 public class WeatherDataService {
 
 
-    public static Map<String, List<BigDecimal>> chartHumidityService() {
+    public static Map<String, List<BigDecimal>> humidityChartService() {
         CityHumidityDto cityHumidityDto = DataFetchingDao.getCityHumidityData();
         List<String> cityNames = DataFetchingDao.getCityNames();
         Logger.info("cityNames::{}", cityNames);
@@ -22,7 +22,7 @@ public class WeatherDataService {
         return (cityMap);
     }
 
-    public static CityPressureDto chartPressureService() {
+    public static CityPressureDto pressureCityService() {
         CityPressureDto cityPressureDto = DataFetchingDao.getCityPressureData();
         Logger.info("cityPressureDto::{}", cityPressureDto);
         return (cityPressureDto);

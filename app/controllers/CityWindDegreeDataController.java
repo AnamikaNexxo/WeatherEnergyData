@@ -8,7 +8,7 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import service.WindDegDataService;
+import service.WindDegreeDataService;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class CityWindDegreeDataController extends Controller {
 
     //get- windDegChartControl
     public Result cityWindDegreeChartControl(Http.Request request) {
-        List<CityWindDegreeDto> cityWindDegreeDto = WindDegDataService.WindDegData();
+        List<CityWindDegreeDto> cityWindDegreeDto = WindDegreeDataService.windDegreeData();
         JsonNode json = Json.toJson(cityWindDegreeDto);
         return ok(json);
     }
