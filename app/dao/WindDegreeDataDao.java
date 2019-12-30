@@ -1,6 +1,6 @@
 package dao;
 
-import dto.CityWindDegDto;
+import dto.CityWindDegreeDto;
 import io.ebean.SqlRow;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class WindDegreeDataDao {
 
-     public static List<CityWindDegDto> getCityWindDegreeData() {
+     public static List<CityWindDegreeDto> getCityWindDegreeData() {
 
 // Query 1 - large amount of Data is being fetched and takes time
 //        List<SqlRow> data = DbConnector.createSqlQuery(
@@ -24,24 +24,24 @@ public class WindDegreeDataDao {
 //                 findList();
 
  // Query 2 -  large amount of Data is being fetched and takes time
-         List<SqlRow> data = DbConnector.createSqlQuery(
+         List<SqlRow> windTableData = DbConnector.createSqlQuery(
                  "Select id, city_name, wind_deg, dt_cl " +
                          "from weather_features " +
                          "where DT_CL " +
                          "between '2015-01-01 00:00:00' and '2015-01-01 03:00:00' ;").
                  findList();
 
-         List<CityWindDegDto> dataList = new ArrayList<>();
-        for (SqlRow row : data) {
-            CityWindDegDto cityWindDegDto = new CityWindDegDto();
-            cityWindDegDto.setId(row.getInteger("id"));
-            cityWindDegDto.setCityName(row.getString("city_name"));
-            cityWindDegDto.setWindDegValue(row.getInteger("wind_deg"));
-            cityWindDegDto.setDate(row.getDate("dt_cl"));
+         List<CityWindDegreeDto> cityWindDegreeDtoList = new ArrayList<>();
+        for (SqlRow row : windTableData) {
+            CityWindDegreeDto cityWindDegreeDto = new CityWindDegreeDto();
+            cityWindDegreeDto.setId(row.getInteger("id"));
+            cityWindDegreeDto.setCityName(row.getString("city_name"));
+            cityWindDegreeDto.setWindDegValue(row.getInteger("wind_deg"));
+            cityWindDegreeDto.setDate(row.getDate("dt_cl"));
 
-            dataList.add(cityWindDegDto);
+            cityWindDegreeDtoList.add(cityWindDegreeDto);
        }
-         return dataList;
+         return cityWindDegreeDtoList;
       }
 
 }

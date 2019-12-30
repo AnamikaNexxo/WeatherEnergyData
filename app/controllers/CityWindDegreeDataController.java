@@ -2,7 +2,7 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
-import dto.CityWindDegDto;
+import dto.CityWindDegreeDto;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -23,8 +23,8 @@ public class CityWindDegreeDataController extends Controller {
 
     //get- windDegChartControl
     public Result cityWindDegreeChartControl(Http.Request request) {
-        List<CityWindDegDto> cityWindDegDto = WindDegDataService.WindDegData();
-        JsonNode json = Json.toJson(cityWindDegDto);
+        List<CityWindDegreeDto> cityWindDegreeDto = WindDegDataService.WindDegData();
+        JsonNode json = Json.toJson(cityWindDegreeDto);
         return ok(json);
     }
 

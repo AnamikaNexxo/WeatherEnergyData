@@ -1,16 +1,16 @@
 package service;
 
 import dao.WindDegreeDataDao;
-import dto.CityWindDegDto;
+import dto.CityWindDegreeDto;
 
 import java.util.List;
 
 public class WindDegDataService {
 
 
-    public static List<CityWindDegDto> WindDegData() {
-        List<CityWindDegDto> cityWindDegDto = WindDegreeDataDao.getCityWindDegreeData();
-        return (cityWindDegDto);
+    public static List<CityWindDegreeDto> WindDegData() {
+        List<CityWindDegreeDto> cityWindDegreeDto = WindDegreeDataDao.getCityWindDegreeData();
+        return (cityWindDegreeDto);
 
     }
 

@@ -15,8 +15,8 @@ import java.util.Map;
 public class DataFetchingDao {
 
 
-    public static CityHumidityDto getHumidityData() {
-        List<SqlRow> rows = DbConnector.createSqlQuery(
+    public static CityHumidityDto getCityHumidityData() {
+        List<SqlRow> dbDataList = DbConnector.createSqlQuery(
                 "SELECT HUMIDITY, city_name " +
                         "FROM weather_features " +
                         "WHERE DATE(DT_CL)='2015-01-01'")// initial corrrect
@@ -26,7 +26,7 @@ public class DataFetchingDao {
         List<BigDecimal> humidityList = new ArrayList<>();
         List<String> cityList = new ArrayList<>();
         CityHumidityDto cityHumidityDto = new CityHumidityDto();
-        for (SqlRow row : rows) {
+        for (SqlRow row : dbDataList) {
             humidityList.add(row.getBigDecimal("HUMIDITY"));
             cityList.add(row.getString("city_name"));
         }
@@ -44,10 +44,10 @@ public class DataFetchingDao {
             String query = "Select HUMIDITY from weather_features where " +
                     "city_name= '" + name + "' and DATE(dt_cl)" +
                     "='2015-01-01'";
-            List<SqlRow> rows =
+            List<SqlRow> humidityValueList =
                     DbConnector.createSqlQuery(query).findList();
             List<BigDecimal> humidity = new ArrayList<>();
-            for (SqlRow row : rows) {
+            for (SqlRow row : humidityValueList) {
                 humidity.add(row.getBigDecimal("HUMIDITY"));
             }
             cityMap.put(name, humidity);
@@ -58,24 +58,21 @@ public class DataFetchingDao {
     }
 
     public static List<String> getCityNames() {
-        List<SqlRow> rows = DbConnector.createSqlQuery(
+        List<SqlRow> cityNameList = DbConnector.createSqlQuery(
                 "SELECT distinct city_name " +
                         "FROM weather_features ")
                 .findList();
         List<String> cityList = new ArrayList<>();
-        for (SqlRow row : rows) {
+        for (SqlRow row : cityNameList) {
             cityList.add(row.getString("city_name"));
         }
         return cityList;
 
     }
 
-
-
-
-    public static CityPressureDto getPressureData() {
+    public static CityPressureDto getCityPressureData() {
         //pressure Data for a particular Time instant
-        List<SqlRow> rows = DbConnector.createSqlQuery(
+        List<SqlRow> cityAndPressure = DbConnector.createSqlQuery(
                 "SELECT pressure,city_name " +
                         "FROM weather_features " +
                         "WHERE DT_CL='2015-01-01 02:00:00'")
@@ -84,7 +81,7 @@ public class DataFetchingDao {
         List<BigDecimal> pressureList = new ArrayList<>();
         List<String> cityList = new ArrayList<>();
         CityPressureDto cityPressureDto = new CityPressureDto();
-        for (SqlRow row : rows) {
+        for (SqlRow row : cityAndPressure) {
             pressureList.add(row.getBigDecimal("pressure"));
             cityList.add(row.getString("city_name"));
         }

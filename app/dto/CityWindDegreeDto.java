@@ -2,7 +2,7 @@ package dto;
 
 import java.util.Date;
 
-public class CityWindDegDto {
+public class CityWindDegreeDto {
 
     private Integer id;
     private String cityName;
