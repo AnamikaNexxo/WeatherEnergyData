@@ -22,11 +22,11 @@ public class WindDegDataController extends Controller {
 
 
     //get- windDegChartControl
-        public Result windDegChartControl(Http.Request request) {
-         List<CityWindDegDto> cityWindDegDto = WindDegDataService.WindDegData();
+    public Result windDegChartControl(Http.Request request) {
+        List<CityWindDegDto> cityWindDegDto = WindDegDataService.WindDegData();
         JsonNode json = Json.toJson(cityWindDegDto);
         return ok(json);
-}
+    }
 
 
 }
