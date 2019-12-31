@@ -1,65 +1,179 @@
 @()
-<html>
+
+@main("Weather Analyser") {
+<!--<h1>Welcome to WeatherData</h1>-->
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+<!--***************************BODY***************************************************-->
 <body>
+<!-------------------------cover Pic section--------------------------->
+<div class="jumbotron text-center">
+    <h1>Analysed Weather Data</h1>
+    <p>Resize this responsive page to see the effect!</p>
+    <div class="jumbotron text-center" style="background-color: pink;">
+        <!--        <h1>Weather information</h1>-->
+        <!--        <p>Resize this responsive page to see the effect!</p>-->
+        <figure class="highcharts-figure">
+
+            <div id="HiChart1"></div>
+        </figure>
+    </div>
+</div>
+<!-------------------------main Body--------------------------->
+
+
 <div class="container">
-    <div class="container-fluid"   align="center" >
+    <div class="row">
+        <h3>Select Time Period</h3>
 
-        <h1>Wind Data Set</h1>
 
-        <br>
-        <table class="table" id="table">
-            <thead class="thead-dark">
-            <tr>
-                <th >Id</th>
-                <th >City Name</th>
-                <th>Win Degree</th>
-                <th>Date and Time</th>
+        <form action="/action_page.php">
+            <div class="md-form mx-5 my-5">
 
-            </tr>
-            <thead class="thead-dark">
-            <tbody></tbody>
-        </table>
+                <div class="form-group">
+                    <label for="example-datetime-local-input" class="col-form-label">From Time :</label>
+                    <div class="col-12">
+                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+                               id="example-datetime-local-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="example-datetime-local-input" class="col-form-label">To Time :</label>
+                    <div class="col-12">
+                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+                               id="example-datetime-local-input">
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <!--                            <form action="">-->
+
+                <!--                                Start Time: <input type="date" name="bday">-->
+                <!--                                <input type="submit">-->
+                <!--                            </form>-->
+
+            </div>
+        </form>
+
 
     </div>
 </div>
+<!-------------------------Script section--------------------------->
 <script>
-
-  $(document).ready(function(){
-    $.ajax({
-        url: "http://localhost:9000/windDegChartControl",
-        dataType: 'json',
-        type: 'get',
-        cache:false,
-        success: function(data){
-
-            var event_data = '';
-            $.each(data, function(index, value){
-                /*console.log(value);*/
-                event_data += '<tr>';
-                event_data += '<td>'+value.id+'</td>';
-                event_data += '<td>'+value.cityName+'</td>';
-                event_data += '<td>'+value.windDegValue+'</td>';
-                event_data += '<td>'+value.date+'</td>';
-                event_data += '<tr>';
-            });
-            $("#table").append(event_data);
-        },
-        error: function(d){
-            /*console.log("error");*/
-            alert("404. Please wait until the File is Loaded.");
-        }
+<!--//-----script1--------------------------->
+    $(function(){
+    $('#datepicker').datepicker();
+    })
+<!--//-----script2---------------------------->
+    $(document).ready(function(){
+        $.ajax({
+            url: '/humidityChartControl',   <!-- url for API for fetching humidity data-->
+            dataType: 'JSON',
+            type: "GET",
+            success: function (data) {
+                console.log("success"+ data);
+                 hiChartFunction1(data.cityName, data.humidityValue);
+             },
+            error: function (data) {
+                console.log(" error"+ data);
+            }
+        });
     });
-});
+    function hiChartFunction1(jsonDataNames, jsonDataValues){
+        Highcharts.chart('HiChart1', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Humidity Analysis'
+            },
+            subtitle: {
+                text: 'Source: Google Play Store</a>'
+            },
+            xAxis: {
+                type: 'cityName',
+                categories: jsonDataNames,
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Humidity Values'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'No of Installations <b>{point.y:.1f} </b> millions'
+            },
+            series: [{
+                name: "humidityValue",
+                data: jsonDataValues,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
-
+<!-----------------------------import Script---------------------------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 </body>
 </html>
+
+}

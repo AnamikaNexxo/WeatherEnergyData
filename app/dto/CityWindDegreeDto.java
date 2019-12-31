@@ -2,10 +2,11 @@ package dto;
 
 public class CityWindDegreeDto {
 
+//    private String dateChoice;
     private Integer id;
     private String cityName;
     private Integer windDegValue;
-    private String date;// change to data time to -date
+    private String date;
 
     public Integer getId() {
         return this.id;
@@ -33,6 +34,14 @@ public class CityWindDegreeDto {
 
     public String getDate() {
         return this.date;
+    }
+
+    public String getDateChoice() {
+        return this.dateChoice;
+    }
+
+    public void setDateChoice(String dateChoice) {
+        this.dateChoice = dateChoice;
     }
 
     public void setDate(String date) {

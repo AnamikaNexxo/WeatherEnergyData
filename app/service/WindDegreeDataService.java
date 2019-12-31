@@ -8,8 +8,9 @@ import java.util.List;
 public class WindDegreeDataService {
 
 
-    public static List<CityWindDegreeDto> windDegreeData() {
-        List<CityWindDegreeDto> cityWindDegreeDto = WindDegreeDataDao.getCityWindDegreeData();
+    public static List<CityWindDegreeDto> windDegreeData(String selectedDate) {
+        List<CityWindDegreeDto> cityWindDegreeDto =
+                WindDegreeDataDao.getCityWindDegreeData(selectedDate);
         return (cityWindDegreeDto);
 
     }

@@ -23,7 +23,9 @@ public class CityWindDegreeDataController extends Controller {
 
     //get- windDegChartControl
     public Result cityWindDegreeChartControl(Http.Request request) {
-        List<CityWindDegreeDto> cityWindDegreeDto = WindDegreeDataService.windDegreeData();
+        String selectedDate = request.getQueryString("selectedDate");
+        List<CityWindDegreeDto> cityWindDegreeDto =
+                WindDegreeDataService.windDegreeData(selectedDate);
         JsonNode json = Json.toJson(cityWindDegreeDto);
         return ok(json);
     }
