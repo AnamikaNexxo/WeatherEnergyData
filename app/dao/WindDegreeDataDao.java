@@ -3,6 +3,7 @@ package dao;
 import dto.CityWindDegreeDto;
 import io.ebean.SqlRow;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +31,14 @@ public class WindDegreeDataDao {
                          "where DT_CL " +
                          "between '2015-01-01 00:00:00' and '2015-01-01 03:00:00' ;").
                  findList();
-
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss a");
          List<CityWindDegreeDto> cityWindDegreeDtoList = new ArrayList<>();
         for (SqlRow row : windTableData) {
             CityWindDegreeDto cityWindDegreeDto = new CityWindDegreeDto();
             cityWindDegreeDto.setId(row.getInteger("id"));
             cityWindDegreeDto.setCityName(row.getString("city_name"));
             cityWindDegreeDto.setWindDegValue(row.getInteger("wind_deg"));
-            cityWindDegreeDto.setDate(row.getDate("dt_cl"));
+            cityWindDegreeDto.setDate(sdf.format(row.getDate("dt_cl")));
 
             cityWindDegreeDtoList.add(cityWindDegreeDto);
        }

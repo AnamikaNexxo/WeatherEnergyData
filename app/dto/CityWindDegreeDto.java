@@ -1,16 +1,14 @@
 package dto;
 
-import java.util.Date;
-
 public class CityWindDegreeDto {
 
     private Integer id;
     private String cityName;
     private Integer windDegValue;
-    private Date date;
+    private String date;// change to data time to -date
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -18,7 +16,7 @@ public class CityWindDegreeDto {
     }
 
     public String getCityName() {
-        return cityName;
+        return this.cityName;
     }
 
     public void setCityName(String cityName) {
@@ -26,18 +24,18 @@ public class CityWindDegreeDto {
     }
 
     public Integer getWindDegValue() {
-        return windDegValue;
+        return this.windDegValue;
     }
 
     public void setWindDegValue(Integer windDegValue) {
         this.windDegValue = windDegValue;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
