@@ -35,14 +35,14 @@ public class CityWindDegreeDto {
     public String getDate() {
         return this.date;
     }
-
-    public String getDateChoice() {
-        return this.dateChoice;
-    }
-
-    public void setDateChoice(String dateChoice) {
-        this.dateChoice = dateChoice;
-    }
+//
+//    public String getDateChoice() {
+//        return this.dateChoice;
+//    }
+//
+//    public void setDateChoice(String dateChoice) {
+//        this.dateChoice = dateChoice;
+//    }
 
     public void setDate(String date) {
         this.date = date;
