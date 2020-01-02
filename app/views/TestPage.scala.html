@@ -1,0 +1,124 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<!---------------------DatePicker----------------------->
+<div class="container">
+    <div class="row">
+
+        <h1>Select Date :</h1>
+        <!--        Date formats: yyyy-mm-dd, yyyymmdd, dd-mm-yyyy, dd/mm/yyyy, ddmmyyyyy-->
+    </div>
+    <br/>
+    <div class="row">
+        <div class='col-sm-3' >
+<!--            <div>-->
+<!--                <label for="datePicker">Date :-->
+<!--                    <input type="date" id="datePicker" name="trip-start" value="2015-02-11" min="2015-01-01" max="2018-12-31">-->
+<!--                    <span class="validity"></span>-->
+<!--                </label>-->
+<!--                <p><button onclick="selectedDateValue()">Submit</button></p>-->
+<!--            </div>-->
+
+
+            <div>
+                <label for="datePicker">Date :
+                    <input type="date" id="datePicker" name="trip-start"  value="2015-01-01" min="2015-01-01" max="2015-02-11">
+                    <span class="validity"></span>
+                </label>
+                <p><button id="submitDate"  onclick="myFunction()">Submit</button></p>
+            </div>
+
+
+
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- -------------------Data---Table-----------------------------------------  -->
+
+
+<div class="container"    style="background-color: pink;">
+    <div class="container-fluid"   align="center" >
+
+        <h1>Wind Data Set</h1>
+
+        <br>
+        <table class="table" id="table">
+            <thead class="thead-dark">
+            <tr>
+                <th >Id</th>
+                <th >City Name</th>
+                <th>Win Degree</th>
+                <th>Date and Time</th>
+
+            </tr>
+            <thead class="thead-dark">
+            <tbody></tbody>
+        </table>
+
+    </div><br>
+</div>
+<script>
+
+  $(document).ready(function(){
+<!--    console.log("-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"+ $('#datepicker').val());-->
+
+//Datepicker Method
+
+$("#submitDate").click(function(){
+ var userDate=$("#datePicker").val();
+
+  alert("Value: " + $("#datePicker").val());
+
+   $.ajax({
+   url: "http://localhost:9000/windDegChartControl?selectedDate="+userDate,
+        dataType: 'json',
+        type: 'get',
+        cache:false,
+        success: function(data){
+
+            var event_data = '';
+            $.each(data, function(index, value){
+                /*console.log(value);*/
+                event_data += '<tr>';
+                event_data += '<td>'+value.id+'</td>';
+                event_data += '<td>'+value.cityName+'</td>';
+                event_data += '<td>'+value.windDegValue+'</td>';
+                event_data += '<td>'+value.date+'</td>';
+                event_data += '<tr>';
+            });
+            $("#table").append(event_data);
+        },
+        error: function(d){
+            /*console.log("error");*/
+<!--            alert("404. Please wait until the File is Loaded.");-->
+        }
+    });
+
+
+
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
