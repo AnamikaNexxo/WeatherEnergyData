@@ -36,10 +36,10 @@
 
             <div>
                 <label for="datePicker">Date :
-                    <input type="date" id="datePicker" name="trip-start"  value="2015-01-01" min="2015-01-01" max="2015-02-11">
+                    <input type="date" id="datePicker" name="trip-start"  value="2015-01-01" >
                     <span class="validity"></span>
                 </label>
-                <p><button id="submitDate"  onclick="myFunction()">Submit</button></p>
+<!--                <p><button id="submitDate"  onclick="myFunction()">Submit</button></p>-->
             </div>
 
 
@@ -52,7 +52,7 @@
 
 <!-- -------------------Data---Table-----------------------------------------  -->
 
-
+<br><br><br>
 <div class="container"    style="background-color: pink;">
     <div class="container-fluid"   align="center" >
 
@@ -77,14 +77,20 @@
 <script>
 
   $(document).ready(function(){
-<!--    console.log("-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;"+ $('#datepicker').val());-->
+
 
 //Datepicker Method
-
-$("#submitDate").click(function(){
+@*********
+<!--activate+ submit button and check-->
+<!--$("#submitDate").click(function(){-->
+<!-- var userDate=$("#datePicker").val();-->
+<!-- alert("Value: " + $("#datePicker").val());-->
+*********@
+$("#datePicker").change(function(){
  var userDate=$("#datePicker").val();
+  alert("userDate: " + userDate);
 
-  alert("Value: " + $("#datePicker").val());
+
 
    $.ajax({
    url: "http://localhost:9000/windDegChartControl?selectedDate="+userDate,
