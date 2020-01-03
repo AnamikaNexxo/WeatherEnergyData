@@ -28,9 +28,10 @@ public class WindDegreeDataDao {
          List<SqlRow> windTableData = DbConnector.createSqlQuery(
                  "Select id, city_name, wind_deg, dt_cl " +
                          "from weather_features " +
-                         "where DT_CL =' " +selectedDate+"'").
+                         "where DT_CL =' " + selectedDate + "'").
+//                          "where date(DT_CL) =' " + selectedDate + "'").
 //                         "between '2015-01-01 00:00:00' and '2015-01-01 03:00:00' ;").
-                 findList();
+         findList();
          SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss a");
          List<CityWindDegreeDto> cityWindDegreeDtoList = new ArrayList<>();
         for (SqlRow row : windTableData) {

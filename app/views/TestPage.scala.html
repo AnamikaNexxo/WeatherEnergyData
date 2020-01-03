@@ -88,7 +88,7 @@
 *********@
 $("#datePicker").change(function(){
  var userDate=$("#datePicker").val();
-  alert("userDate: " + userDate);
+<!--  alert("userDate: " + userDate);-->
 
 
 
@@ -100,8 +100,10 @@ $("#datePicker").change(function(){
         success: function(data){
 
             var event_data = '';
+
             $.each(data, function(index, value){
                 /*console.log(value);*/
+              $("td").remove();
                 event_data += '<tr>';
                 event_data += '<td>'+value.id+'</td>';
                 event_data += '<td>'+value.cityName+'</td>';
@@ -109,15 +111,14 @@ $("#datePicker").change(function(){
                 event_data += '<td>'+value.date+'</td>';
                 event_data += '<tr>';
             });
-            $("#table").append(event_data);
+<!--            $("#table").append(event_data);  // data of new date gets appended to the previous date(defect)-->
+                $("#table").append(event_data);
         },
         error: function(d){
             /*console.log("error");*/
 <!--            alert("404. Please wait until the File is Loaded.");-->
         }
     });
-
-
 
 
 });
