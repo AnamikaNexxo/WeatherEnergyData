@@ -19,7 +19,7 @@ public class DataFetchingDao {
         List<SqlRow> dbDataList = DbConnector.createSqlQuery(
                 "SELECT HUMIDITY, city_name " +
                         "FROM weather_features " +
-                        "WHERE DATE(DT_CL)='2015-01-01'")// initial corrrect
+                        "WHERE DATE(DT_CL)='2015-01-01'")
 
                 .findList();
 

@@ -24,8 +24,6 @@ public class WeatherDataController extends Controller {
     }
 
     public Result cityHumidityChartControl(Http.Request request) {
-//        CityHumidityDto cityHumidityDto =
-//                WeatherDataService.chartHumidityService();
         Map<String, List<BigDecimal>> citiDataValues=
                 WeatherDataService.humidityChartService();
         JsonNode json = Json.toJson(citiDataValues);

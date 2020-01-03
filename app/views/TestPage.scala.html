@@ -103,7 +103,7 @@ $("#datePicker").change(function(){
 
             $.each(data, function(index, value){
                 /*console.log(value);*/
-              $("td").remove();
+              $("td").remove(); // removes existing selected elements out of the <DOM></DOM>
                 event_data += '<tr>';
                 event_data += '<td>'+value.id+'</td>';
                 event_data += '<td>'+value.cityName+'</td>';
@@ -116,7 +116,7 @@ $("#datePicker").change(function(){
         },
         error: function(d){
             /*console.log("error");*/
-<!--            alert("404. Please wait until the File is Loaded.");-->
+            alert("404. Please wait until the File is Loaded.");
         }
     });
 
