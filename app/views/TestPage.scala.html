@@ -19,42 +19,25 @@
 <div class="container">
     <div class="row">
 
-        <h1>Select Date :</h1>
-        <!--        Date formats: yyyy-mm-dd, yyyymmdd, dd-mm-yyyy, dd/mm/yyyy, ddmmyyyyy-->
-    </div>
-    <br/>
-    <div class="row">
-        <div class='col-sm-3' >
-<!--            <div>-->
-<!--                <label for="datePicker">Date :-->
-<!--                    <input type="date" id="datePicker" name="trip-start" value="2015-02-11" min="2015-01-01" max="2018-12-31">-->
-<!--                    <span class="validity"></span>-->
-<!--                </label>-->
-<!--                <p><button onclick="selectedDateValue()">Submit</button></p>-->
-<!--            </div>-->
-
-
+        <div class='col-sm-4'>
+            <h1>Select Date :</h1><br>
             <div>
                 <label for="datePicker">Date :
-                    <input type="date" id="datePicker" name="trip-start"  value="2015-01-01" >
+                    <input type="date" id="datePicker" name="trip-start" value="2015-01-01">
                     <span class="validity"></span>
                 </label>
-<!--                <p><button id="submitDate"  onclick="myFunction()">Submit</button></p>-->
             </div>
-
-
-
         </div>
+        
 
-        </div>
     </div>
 </div>
 
 <!-- -------------------Data---Table-----------------------------------------  -->
 
-<br><br><br>
-<div class="container"    style="background-color: pink;">
-    <div class="container-fluid"   align="center" >
+<br><br>
+<div class="container" style="background-color: pink;">
+    <div class="container-fluid" align="center">
 
         <h1>Wind Data Set</h1>
 
@@ -62,30 +45,25 @@
         <table class="table" id="table">
             <thead class="thead-dark">
             <tr>
-                <th >Id</th>
-                <th >City Name</th>
+                <th>Id</th>
+                <th>City Name</th>
                 <th>Win Degree</th>
                 <th>Date and Time</th>
-
             </tr>
-            <thead class="thead-dark">
-            <tbody></tbody>
+            </thead>
         </table>
 
-    </div><br>
+    </div>
+    <br>
 </div>
+
+<!------------------------------------------------------------------------------->
 <script>
 
   $(document).ready(function(){
 
 
 //Datepicker Method
-@*********
-<!--activate+ submit button and check-->
-<!--$("#submitDate").click(function(){-->
-<!-- var userDate=$("#datePicker").val();-->
-<!-- alert("Value: " + $("#datePicker").val());-->
-*********@
 $("#datePicker").change(function(){
  var userDate=$("#datePicker").val();
 <!--  alert("userDate: " + userDate);-->
